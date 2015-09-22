@@ -4,7 +4,8 @@
   "description": "A simple peer to peer html5 video chat",
   "main": "index.js",
   "scripts": {
-    "start": "budo index.js:build.js --live"
+    "start": "budo index.js:build.js --live",
+    "build": "browserify index.js > build.js"
   },
   "keywords": [
     "html5",
