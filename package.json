@@ -1,0 +1,22 @@
+{
+  "name": "html5-video-chat",
+  "version": "1.0.0",
+  "description": "A simple peer to peer html5 video chat",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo index.js:build.js --live"
+  },
+  "keywords": [
+    "html5",
+    "video",
+    "chat"
+  ],
+  "author": "Aravind Buddha",
+  "license": "ISC",
+  "dependencies": {
+    "simple-peer": "^5.11.5"
+  },
+  "devDependencies": {
+    "budo": "^4.2.2"
+  }
+}
