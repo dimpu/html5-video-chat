@@ -1,158 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var app = {
-	init:function(){
-		$("#chat").hide();
-		// this.showChat();
-		this.events.onInitBtnClick();
-		this.events.onJoinBtnClick();
-	},
-	showChat:function(){
-		$("#chat").show("slow");
-		this.hideBtns();
-		console.log(window.location.hash);
-		// if(window.location.hash === "#init"){
-		// 	$("#ohterid-group").hide();
-		// 	$("#myid-group").show();
-		// }else{
-		// 	$("#ohterid-group").show();
-		// 	$("#myid-group").hide();
-		// }
-	},
-	joinChat:function(){
-		$(".loader").hide();
-	},
-	initChat:function(){
-
-	},
-	hideBtns:function(){
-		$("#init").hide("slow");
-	},
-	events:{
-		onInitBtnClick:function(){
-			$("#init-btn").on('click',function(){
-				app.hideBtns();
-				app.showChat();
-			});
-		},
-		onJoinBtnClick:function(){
-			$("#join-btn").on('click',function(){
-				app.hideBtns();
-				app.showChat();
-				app.joinChat();
-			});
-		}
-	}
-};
-app.init();
-},{}],2:[function(require,module,exports){
-require('./app');
-// navigator.getUserMedia_ = (   navigator.mediaDevices.getUserMedia
-//                            || navigator.mediaDevices.webkitGetUserMedia 
-//                            || navigator.mediaDevices.mozGetUserMedia 
-//                            || navigator.mediaDevices.msGetUserMedia);
-
-// var getUserMedia_ = navigator.getUserMedia 
-
-// getUserMedia_({video:true,audio:false}, function(stream){
-// 	var Peer = require('simple-peer');
-// 	var peer = new Peer({
-// 		initiator:location.hash === '#init',
-// 		trickle:false,
-// 		stream:stream
-// 	});
-
-// 	peer.on('signal',function(data){
-// 		console.log(data);
-// 		$('.loader').hide();
-// 		$('#myId').val(JSON.stringify(data));
-// 	});
-
-// 	peer.on('connect', function () {
-// 		console.log('CONNECT')
-// 		peer.send('whatever' + Math.random())
-// 	})
-
-// 	peer.on('data', function (data) {
-// 		console.log('data: ' + data)
-// 	})
-
-// 	peer.on('stream',function(stream){
-// 		var video =  document.createElement('video');
-// 		$('#video-area').append(video);
-// 		video.src = window.URL.createObjectURL(stream);
-// 		video.play();
-// 	});
-
-// 	$("#connect").on('click',function(){
-// 		var otherId = $("#otherId").val();
-// 		peer.signal(otherId);
-// 	});
-
-// }, function(err){
-// 	console.error(err);
-// });
-
-
-// var SimplePeer = require('simple-peer')
-
-// // get video/voice stream 
-navigator.getUserMedia({ video: true, audio: true }, gotMedia, function () {})
-function gotMedia(stream) {
-	var Peer = require('simple-peer');
-	var peer = new Peer({
-		initiator:location.hash === '#init',
-		trickle:false,
-		stream:stream
-	});
-
-	peer.on('signal',function(data){
-		console.log(data);
-		$('.loader').hide();
-		$('#myId').val(JSON.stringify(data));
-	});
-
-	peer.on('connect', function () {
-		console.log('CONNECT')
-		peer.send('whatever' + Math.random())
-	})
-
-	peer.on('data', function (data) {
-		console.log('data: ' + data)
-	})
-
-	peer.on('stream',function(stream){
-		var video =  document.createElement('video');
-		$('#video-area').append(video);
-		video.src = window.URL.createObjectURL(stream);
-		video.play();
-	});
-
-	$("#connect").on('click',function(){
-		var otherId = $("#otherId").val();
-		peer.signal(otherId);
-	});
-}
-// function gotMedia (stream) {
-//  var peer1 = new SimplePeer({ initiator: true, stream: stream })
-//  var peer2 = new SimplePeer()
-
-//  peer1.on('signal', function (data) {
-// 	 peer2.signal(data)
-//  })
-
-//  peer2.on('signal', function (data) {
-// 	 peer1.signal(data)
-//  })
-
-//  peer2.on('stream', function (stream) {
-// 	 // got remote video stream, now let's show it in a video tag 
-// 	 var video = document.querySelector('video')
-// 	 console.log(stream);
-// 	 video.src = window.URL.createObjectURL(stream)
-// 	 video.play()
-//  })
-// }
-},{"./app":1,"simple-peer":35}],3:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -268,9 +114,9 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],4:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 
-},{}],5:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -1986,7 +1832,7 @@ function numberIsNaN (obj) {
   return obj !== obj // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":3,"ieee754":12}],6:[function(require,module,exports){
+},{"base64-js":1,"ieee754":19}],4:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -2097,7 +1943,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":14}],7:[function(require,module,exports){
+},{"../../is-buffer/index.js":21}],5:[function(require,module,exports){
 (function (process){
 /**
  * This is the web browser implementation of `debug()`.
@@ -2286,7 +2132,7 @@ function localstorage() {
 }
 
 }).call(this,require('_process'))
-},{"./debug":8,"_process":20}],8:[function(require,module,exports){
+},{"./debug":6,"_process":27}],6:[function(require,module,exports){
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -2490,7 +2336,7 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":17}],9:[function(require,module,exports){
+},{"ms":24}],7:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -2794,7 +2640,1285 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
+},{}],8:[function(require,module,exports){
+/*! @license Firebase v4.3.1
+Build: rev-b4fe95f
+Terms: https://firebase.google.com/terms/ */
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+require('./utils/shims');
+
+var _firebase_app = require('./app/firebase_app');
+
+// Export a single instance of firebase app
+/**
+* Copyright 2017 Google Inc.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+// Import the needed shims
+var firebase = (0, _firebase_app.createFirebaseNamespace)();
+// Import the createFirebaseNamespace function
+exports.default = firebase;
+module.exports = exports['default'];
+
+
+},{"./app/firebase_app":10,"./utils/shims":16}],9:[function(require,module,exports){
+/*! @license Firebase v4.3.1
+Build: rev-b4fe95f
+Terms: https://firebase.google.com/terms/ */
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.patchCapture = patchCapture;
+var ERROR_NAME = 'FirebaseError';
+var captureStackTrace = Error.captureStackTrace;
+// Export for faking in tests
+function patchCapture(captureFake) {
+    var result = captureStackTrace;
+    captureStackTrace = captureFake;
+    return result;
+}
+var FirebaseError = function () {
+    function FirebaseError(code, message) {
+        this.code = code;
+        this.message = message;
+        var stack;
+        // We want the stack value, if implemented by Error
+        if (captureStackTrace) {
+            // Patches this.stack, omitted calls above ErrorFactory#create
+            captureStackTrace(this, ErrorFactory.prototype.create);
+        } else {
+            var err_1 = Error.apply(this, arguments);
+            this.name = ERROR_NAME;
+            // Make non-enumerable getter for the property.
+            Object.defineProperty(this, 'stack', {
+                get: function get() {
+                    return err_1.stack;
+                }
+            });
+        }
+    }
+    return FirebaseError;
+}();
+exports.FirebaseError = FirebaseError;
+// Back-door inheritance
+
+FirebaseError.prototype = Object.create(Error.prototype);
+FirebaseError.prototype.constructor = FirebaseError;
+FirebaseError.prototype.name = ERROR_NAME;
+var ErrorFactory = function () {
+    function ErrorFactory(service, serviceName, errors) {
+        this.service = service;
+        this.serviceName = serviceName;
+        this.errors = errors;
+        // Matches {$name}, by default.
+        this.pattern = /\{\$([^}]+)}/g;
+        // empty
+    }
+    ErrorFactory.prototype.create = function (code, data) {
+        if (data === undefined) {
+            data = {};
+        }
+        var template = this.errors[code];
+        var fullCode = this.service + '/' + code;
+        var message;
+        if (template === undefined) {
+            message = 'Error';
+        } else {
+            message = template.replace(this.pattern, function (match, key) {
+                var value = data[key];
+                return value !== undefined ? value.toString() : '<' + key + '?>';
+            });
+        }
+        // Service: Error message (service/code).
+        message = this.serviceName + ': ' + message + ' (' + fullCode + ').';
+        var err = new FirebaseError(fullCode, message);
+        // Populate the Error object with message parts for programmatic
+        // accesses (e.g., e.file).
+        for (var prop in data) {
+            if (!data.hasOwnProperty(prop) || prop.slice(-1) === '_') {
+                continue;
+            }
+            err[prop] = data[prop];
+        }
+        return err;
+    };
+    return ErrorFactory;
+}();
+exports.ErrorFactory = ErrorFactory;
+
+
 },{}],10:[function(require,module,exports){
+/*! @license Firebase v4.3.1
+Build: rev-b4fe95f
+Terms: https://firebase.google.com/terms/ */
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.createFirebaseNamespace = createFirebaseNamespace;
+
+var _subscribe = require('./subscribe');
+
+var _errors = require('./errors');
+
+var _promise = require('../utils/promise');
+
+var _deep_copy = require('../utils/deep_copy');
+
+/**
+* Copyright 2017 Google Inc.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+var contains = function contains(obj, key) {
+    return Object.prototype.hasOwnProperty.call(obj, key);
+};
+var DEFAULT_ENTRY_NAME = '[DEFAULT]';
+// An array to capture listeners before the true auth functions
+// exist
+var tokenListeners = [];
+/**
+ * Global context object for a collection of services using
+ * a shared authentication state.
+ */
+var FirebaseAppImpl = function () {
+    function FirebaseAppImpl(options, name, firebase_) {
+        this.firebase_ = firebase_;
+        this.isDeleted_ = false;
+        this.services_ = {};
+        this.name_ = name;
+        this.options_ = (0, _deep_copy.deepCopy)(options);
+        this.INTERNAL = {
+            getUid: function getUid() {
+                return null;
+            },
+            getToken: function getToken() {
+                return _promise.PromiseImpl.resolve(null);
+            },
+            addAuthTokenListener: function addAuthTokenListener(callback) {
+                tokenListeners.push(callback);
+                // Make sure callback is called, asynchronously, in the absence of the auth module
+                setTimeout(function () {
+                    return callback(null);
+                }, 0);
+            },
+            removeAuthTokenListener: function removeAuthTokenListener(callback) {
+                tokenListeners = tokenListeners.filter(function (listener) {
+                    return listener !== callback;
+                });
+            }
+        };
+    }
+    Object.defineProperty(FirebaseAppImpl.prototype, "name", {
+        get: function get() {
+            this.checkDestroyed_();
+            return this.name_;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FirebaseAppImpl.prototype, "options", {
+        get: function get() {
+            this.checkDestroyed_();
+            return this.options_;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    FirebaseAppImpl.prototype.delete = function () {
+        var _this = this;
+        return new _promise.PromiseImpl(function (resolve) {
+            _this.checkDestroyed_();
+            resolve();
+        }).then(function () {
+            _this.firebase_.INTERNAL.removeApp(_this.name_);
+            var services = [];
+            Object.keys(_this.services_).forEach(function (serviceKey) {
+                Object.keys(_this.services_[serviceKey]).forEach(function (instanceKey) {
+                    services.push(_this.services_[serviceKey][instanceKey]);
+                });
+            });
+            return _promise.PromiseImpl.all(services.map(function (service) {
+                return service.INTERNAL.delete();
+            }));
+        }).then(function () {
+            _this.isDeleted_ = true;
+            _this.services_ = {};
+        });
+    };
+    /**
+     * Return a service instance associated with this app (creating it
+     * on demand), identified by the passed instanceIdentifier.
+     *
+     * NOTE: Currently storage is the only one that is leveraging this
+     * functionality. They invoke it by calling:
+     *
+     * ```javascript
+     * firebase.app().storage('STORAGE BUCKET ID')
+     * ```
+     *
+     * The service name is passed to this already
+     * @internal
+     */
+    FirebaseAppImpl.prototype._getService = function (name, instanceIdentifier) {
+        if (instanceIdentifier === void 0) {
+            instanceIdentifier = DEFAULT_ENTRY_NAME;
+        }
+        this.checkDestroyed_();
+        if (!this.services_[name]) {
+            this.services_[name] = {};
+        }
+        if (!this.services_[name][instanceIdentifier]) {
+            /**
+             * If a custom instance has been defined (i.e. not '[DEFAULT]')
+             * then we will pass that instance on, otherwise we pass `null`
+             */
+            var instanceSpecifier = instanceIdentifier !== DEFAULT_ENTRY_NAME ? instanceIdentifier : undefined;
+            var service = this.firebase_.INTERNAL.factories[name](this, this.extendApp.bind(this), instanceSpecifier);
+            this.services_[name][instanceIdentifier] = service;
+        }
+        return this.services_[name][instanceIdentifier];
+    };
+    /**
+     * Callback function used to extend an App instance at the time
+     * of service instance creation.
+     */
+    FirebaseAppImpl.prototype.extendApp = function (props) {
+        var _this = this;
+        // Copy the object onto the FirebaseAppImpl prototype
+        (0, _deep_copy.deepExtend)(this, props);
+        /**
+         * If the app has overwritten the addAuthTokenListener stub, forward
+         * the active token listeners on to the true fxn.
+         *
+         * TODO: This function is required due to our current module
+         * structure. Once we are able to rely strictly upon a single module
+         * implementation, this code should be refactored and Auth should
+         * provide these stubs and the upgrade logic
+         */
+        if (props.INTERNAL && props.INTERNAL.addAuthTokenListener) {
+            tokenListeners.forEach(function (listener) {
+                _this.INTERNAL.addAuthTokenListener(listener);
+            });
+            tokenListeners = [];
+        }
+    };
+    /**
+     * This function will throw an Error if the App has already been deleted -
+     * use before performing API actions on the App.
+     */
+    FirebaseAppImpl.prototype.checkDestroyed_ = function () {
+        if (this.isDeleted_) {
+            error('app-deleted', { name: this.name_ });
+        }
+    };
+    return FirebaseAppImpl;
+}();
+// Prevent dead-code elimination of these methods w/o invalid property
+// copying.
+FirebaseAppImpl.prototype.name && FirebaseAppImpl.prototype.options || FirebaseAppImpl.prototype.delete || console.log('dc');
+/**
+ * Return a firebase namespace object.
+ *
+ * In production, this will be called exactly once and the result
+ * assigned to the 'firebase' global.  It may be called multiple times
+ * in unit tests.
+ */
+function createFirebaseNamespace() {
+    var apps_ = {};
+    var factories = {};
+    var appHooks = {};
+    // A namespace is a plain JavaScript Object.
+    var namespace = {
+        // Hack to prevent Babel from modifying the object returned
+        // as the firebase namespace.
+        __esModule: true,
+        initializeApp: initializeApp,
+        app: app,
+        apps: null,
+        Promise: _promise.PromiseImpl,
+        SDK_VERSION: '4.3.1',
+        INTERNAL: {
+            registerService: registerService,
+            createFirebaseNamespace: createFirebaseNamespace,
+            extendNamespace: extendNamespace,
+            createSubscribe: _subscribe.createSubscribe,
+            ErrorFactory: _errors.ErrorFactory,
+            removeApp: removeApp,
+            factories: factories,
+            useAsService: useAsService,
+            Promise: _promise.PromiseImpl,
+            deepExtend: _deep_copy.deepExtend
+        }
+    };
+    // Inject a circular default export to allow Babel users who were previously
+    // using:
+    //
+    //   import firebase from 'firebase';
+    //   which becomes: var firebase = require('firebase').default;
+    //
+    // instead of
+    //
+    //   import * as firebase from 'firebase';
+    //   which becomes: var firebase = require('firebase');
+    (0, _deep_copy.patchProperty)(namespace, 'default', namespace);
+    // firebase.apps is a read-only getter.
+    Object.defineProperty(namespace, 'apps', {
+        get: getApps
+    });
+    /**
+     * Called by App.delete() - but before any services associated with the App
+     * are deleted.
+     */
+    function removeApp(name) {
+        var app = apps_[name];
+        callAppHooks(app, 'delete');
+        delete apps_[name];
+    }
+    /**
+     * Get the App object for a given name (or DEFAULT).
+     */
+    function app(name) {
+        name = name || DEFAULT_ENTRY_NAME;
+        if (!contains(apps_, name)) {
+            error('no-app', { name: name });
+        }
+        return apps_[name];
+    }
+    (0, _deep_copy.patchProperty)(app, 'App', FirebaseAppImpl);
+    /**
+     * Create a new App instance (name must be unique).
+     */
+    function initializeApp(options, name) {
+        if (name === undefined) {
+            name = DEFAULT_ENTRY_NAME;
+        } else {
+            if (typeof name !== 'string' || name === '') {
+                error('bad-app-name', { name: name + '' });
+            }
+        }
+        if (contains(apps_, name)) {
+            error('duplicate-app', { name: name });
+        }
+        var app = new FirebaseAppImpl(options, name, namespace);
+        apps_[name] = app;
+        callAppHooks(app, 'create');
+        return app;
+    }
+    /*
+     * Return an array of all the non-deleted FirebaseApps.
+     */
+    function getApps() {
+        // Make a copy so caller cannot mutate the apps list.
+        return Object.keys(apps_).map(function (name) {
+            return apps_[name];
+        });
+    }
+    /*
+     * Register a Firebase Service.
+     *
+     * firebase.INTERNAL.registerService()
+     *
+     * TODO: Implement serviceProperties.
+     */
+    function registerService(name, createService, serviceProperties, appHook, allowMultipleInstances) {
+        // Cannot re-register a service that already exists
+        if (factories[name]) {
+            error('duplicate-service', { name: name });
+        }
+        // Capture the service factory for later service instantiation
+        factories[name] = createService;
+        // Capture the appHook, if passed
+        if (appHook) {
+            appHooks[name] = appHook;
+            // Run the **new** app hook on all existing apps
+            getApps().forEach(function (app) {
+                appHook('create', app);
+            });
+        }
+        // The Service namespace is an accessor function ...
+        var serviceNamespace = function serviceNamespace(appArg) {
+            if (appArg === void 0) {
+                appArg = app();
+            }
+            if (typeof appArg[name] !== 'function') {
+                // Invalid argument.
+                // This happens in the following case: firebase.storage('gs:/')
+                error('invalid-app-argument', { name: name });
+            }
+            // Forward service instance lookup to the FirebaseApp.
+            return appArg[name]();
+        };
+        // ... and a container for service-level properties.
+        if (serviceProperties !== undefined) {
+            (0, _deep_copy.deepExtend)(serviceNamespace, serviceProperties);
+        }
+        // Monkey-patch the serviceNamespace onto the firebase namespace
+        namespace[name] = serviceNamespace;
+        // Patch the FirebaseAppImpl prototype
+        FirebaseAppImpl.prototype[name] = function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            var serviceFxn = this._getService.bind(this, name);
+            return serviceFxn.apply(this, allowMultipleInstances ? args : []);
+        };
+        return serviceNamespace;
+    }
+    /**
+     * Patch the top-level firebase namespace with additional properties.
+     *
+     * firebase.INTERNAL.extendNamespace()
+     */
+    function extendNamespace(props) {
+        (0, _deep_copy.deepExtend)(namespace, props);
+    }
+    function callAppHooks(app, eventName) {
+        Object.keys(factories).forEach(function (serviceName) {
+            // Ignore virtual services
+            var factoryName = useAsService(app, serviceName);
+            if (factoryName === null) {
+                return;
+            }
+            if (appHooks[factoryName]) {
+                appHooks[factoryName](eventName, app);
+            }
+        });
+    }
+    // Map the requested service to a registered service name
+    // (used to map auth to serverAuth service when needed).
+    function useAsService(app, name) {
+        if (name === 'serverAuth') {
+            return null;
+        }
+        var useService = name;
+        var options = app.options;
+        return useService;
+    }
+    return namespace;
+}
+function error(code, args) {
+    throw appErrors.create(code, args);
+}
+// TypeScript does not support non-string indexes!
+// let errors: {[code: AppError: string} = {
+var errors = {
+    'no-app': "No Firebase App '{$name}' has been created - " + 'call Firebase App.initializeApp()',
+    'bad-app-name': "Illegal App name: '{$name}",
+    'duplicate-app': "Firebase App named '{$name}' already exists",
+    'app-deleted': "Firebase App named '{$name}' already deleted",
+    'duplicate-service': "Firebase service named '{$name}' already registered",
+    'sa-not-supported': 'Initializing the Firebase SDK with a service ' + 'account is only allowed in a Node.js environment. On client ' + 'devices, you should instead initialize the SDK with an api key and ' + 'auth domain',
+    'invalid-app-argument': 'firebase.{$name}() takes either no argument or a ' + 'Firebase App instance.'
+};
+var appErrors = new _errors.ErrorFactory('app', 'Firebase', errors);
+
+
+},{"../utils/deep_copy":13,"../utils/promise":15,"./errors":9,"./subscribe":11}],11:[function(require,module,exports){
+/*! @license Firebase v4.3.1
+Build: rev-b4fe95f
+Terms: https://firebase.google.com/terms/ */
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.createSubscribe = createSubscribe;
+exports.async = async;
+
+var _promise = require('../utils/promise');
+
+/**
+ * Helper to make a Subscribe function (just like Promise helps make a
+ * Thenable).
+ *
+ * @param executor Function which can make calls to a single Observer
+ *     as a proxy.
+ * @param onNoObservers Callback when count of Observers goes to zero.
+ */
+function createSubscribe(executor, onNoObservers) {
+    var proxy = new ObserverProxy(executor, onNoObservers);
+    return proxy.subscribe.bind(proxy);
+}
+/**
+ * Implement fan-out for any number of Observers attached via a subscribe
+ * function.
+ */
+var ObserverProxy = function () {
+    /**
+     * @param executor Function which can make calls to a single Observer
+     *     as a proxy.
+     * @param onNoObservers Callback when count of Observers goes to zero.
+     */
+    function ObserverProxy(executor, onNoObservers) {
+        var _this = this;
+        this.observers = [];
+        this.unsubscribes = [];
+        this.observerCount = 0;
+        // Micro-task scheduling by calling task.then().
+        this.task = _promise.PromiseImpl.resolve();
+        this.finalized = false;
+        this.onNoObservers = onNoObservers;
+        // Call the executor asynchronously so subscribers that are called
+        // synchronously after the creation of the subscribe function
+        // can still receive the very first value generated in the executor.
+        this.task.then(function () {
+            executor(_this);
+        }).catch(function (e) {
+            _this.error(e);
+        });
+    }
+    ObserverProxy.prototype.next = function (value) {
+        this.forEachObserver(function (observer) {
+            observer.next(value);
+        });
+    };
+    ObserverProxy.prototype.error = function (error) {
+        this.forEachObserver(function (observer) {
+            observer.error(error);
+        });
+        this.close(error);
+    };
+    ObserverProxy.prototype.complete = function () {
+        this.forEachObserver(function (observer) {
+            observer.complete();
+        });
+        this.close();
+    };
+    /**
+     * Subscribe function that can be used to add an Observer to the fan-out list.
+     *
+     * - We require that no event is sent to a subscriber sychronously to their
+     *   call to subscribe().
+     */
+    ObserverProxy.prototype.subscribe = function (nextOrObserver, error, complete) {
+        var _this = this;
+        var observer;
+        if (nextOrObserver === undefined && error === undefined && complete === undefined) {
+            throw new Error('Missing Observer.');
+        }
+        // Assemble an Observer object when passed as callback functions.
+        if (implementsAnyMethods(nextOrObserver, ['next', 'error', 'complete'])) {
+            observer = nextOrObserver;
+        } else {
+            observer = {
+                next: nextOrObserver,
+                error: error,
+                complete: complete
+            };
+        }
+        if (observer.next === undefined) {
+            observer.next = noop;
+        }
+        if (observer.error === undefined) {
+            observer.error = noop;
+        }
+        if (observer.complete === undefined) {
+            observer.complete = noop;
+        }
+        var unsub = this.unsubscribeOne.bind(this, this.observers.length);
+        // Attempt to subscribe to a terminated Observable - we
+        // just respond to the Observer with the final error or complete
+        // event.
+        if (this.finalized) {
+            this.task.then(function () {
+                try {
+                    if (_this.finalError) {
+                        observer.error(_this.finalError);
+                    } else {
+                        observer.complete();
+                    }
+                } catch (e) {
+                    // nothing
+                }
+                return;
+            });
+        }
+        this.observers.push(observer);
+        return unsub;
+    };
+    // Unsubscribe is synchronous - we guarantee that no events are sent to
+    // any unsubscribed Observer.
+    ObserverProxy.prototype.unsubscribeOne = function (i) {
+        if (this.observers === undefined || this.observers[i] === undefined) {
+            return;
+        }
+        delete this.observers[i];
+        this.observerCount -= 1;
+        if (this.observerCount === 0 && this.onNoObservers !== undefined) {
+            this.onNoObservers(this);
+        }
+    };
+    ObserverProxy.prototype.forEachObserver = function (fn) {
+        if (this.finalized) {
+            // Already closed by previous event....just eat the additional values.
+            return;
+        }
+        // Since sendOne calls asynchronously - there is no chance that
+        // this.observers will become undefined.
+        for (var i = 0; i < this.observers.length; i++) {
+            this.sendOne(i, fn);
+        }
+    };
+    // Call the Observer via one of it's callback function. We are careful to
+    // confirm that the observe has not been unsubscribed since this asynchronous
+    // function had been queued.
+    ObserverProxy.prototype.sendOne = function (i, fn) {
+        var _this = this;
+        // Execute the callback asynchronously
+        this.task.then(function () {
+            if (_this.observers !== undefined && _this.observers[i] !== undefined) {
+                try {
+                    fn(_this.observers[i]);
+                } catch (e) {
+                    // Ignore exceptions raised in Observers or missing methods of an
+                    // Observer.
+                    // Log error to console. b/31404806
+                    if (typeof console !== 'undefined' && console.error) {
+                        console.error(e);
+                    }
+                }
+            }
+        });
+    };
+    ObserverProxy.prototype.close = function (err) {
+        var _this = this;
+        if (this.finalized) {
+            return;
+        }
+        this.finalized = true;
+        if (err !== undefined) {
+            this.finalError = err;
+        }
+        // Proxy is no longer needed - garbage collect references
+        this.task.then(function () {
+            _this.observers = undefined;
+            _this.onNoObservers = undefined;
+        });
+    };
+    return ObserverProxy;
+}();
+/** Turn synchronous function into one called asynchronously. */
+function async(fn, onError) {
+    return function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        _promise.PromiseImpl.resolve(true).then(function () {
+            fn.apply(void 0, args);
+        }).catch(function (error) {
+            if (onError) {
+                onError(error);
+            }
+        });
+    };
+}
+/**
+ * Return true if the object passed in implements any of the named methods.
+ */
+function implementsAnyMethods(obj, methods) {
+    if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) !== 'object' || obj === null) {
+        return false;
+    }
+    for (var _i = 0, methods_1 = methods; _i < methods_1.length; _i++) {
+        var method = methods_1[_i];
+        if (method in obj && typeof obj[method] === 'function') {
+            return true;
+        }
+    }
+    return false;
+}
+function noop() {
+    // do nothing
+}
+
+
+},{"../utils/promise":15}],12:[function(require,module,exports){
+(function (root) {
+
+  // Store setTimeout reference so promise-polyfill will be unaffected by
+  // other code modifying setTimeout (like sinon.useFakeTimers())
+  var setTimeoutFunc = setTimeout;
+
+  function noop() {}
+  
+  // Polyfill for Function.prototype.bind
+  function bind(fn, thisArg) {
+    return function () {
+      fn.apply(thisArg, arguments);
+    };
+  }
+
+  function Promise(fn) {
+    if (typeof this !== 'object') throw new TypeError('Promises must be constructed via new');
+    if (typeof fn !== 'function') throw new TypeError('not a function');
+    this._state = 0;
+    this._handled = false;
+    this._value = undefined;
+    this._deferreds = [];
+
+    doResolve(fn, this);
+  }
+
+  function handle(self, deferred) {
+    while (self._state === 3) {
+      self = self._value;
+    }
+    if (self._state === 0) {
+      self._deferreds.push(deferred);
+      return;
+    }
+    self._handled = true;
+    Promise._immediateFn(function () {
+      var cb = self._state === 1 ? deferred.onFulfilled : deferred.onRejected;
+      if (cb === null) {
+        (self._state === 1 ? resolve : reject)(deferred.promise, self._value);
+        return;
+      }
+      var ret;
+      try {
+        ret = cb(self._value);
+      } catch (e) {
+        reject(deferred.promise, e);
+        return;
+      }
+      resolve(deferred.promise, ret);
+    });
+  }
+
+  function resolve(self, newValue) {
+    try {
+      // Promise Resolution Procedure: https://github.com/promises-aplus/promises-spec#the-promise-resolution-procedure
+      if (newValue === self) throw new TypeError('A promise cannot be resolved with itself.');
+      if (newValue && (typeof newValue === 'object' || typeof newValue === 'function')) {
+        var then = newValue.then;
+        if (newValue instanceof Promise) {
+          self._state = 3;
+          self._value = newValue;
+          finale(self);
+          return;
+        } else if (typeof then === 'function') {
+          doResolve(bind(then, newValue), self);
+          return;
+        }
+      }
+      self._state = 1;
+      self._value = newValue;
+      finale(self);
+    } catch (e) {
+      reject(self, e);
+    }
+  }
+
+  function reject(self, newValue) {
+    self._state = 2;
+    self._value = newValue;
+    finale(self);
+  }
+
+  function finale(self) {
+    if (self._state === 2 && self._deferreds.length === 0) {
+      Promise._immediateFn(function() {
+        if (!self._handled) {
+          Promise._unhandledRejectionFn(self._value);
+        }
+      });
+    }
+
+    for (var i = 0, len = self._deferreds.length; i < len; i++) {
+      handle(self, self._deferreds[i]);
+    }
+    self._deferreds = null;
+  }
+
+  function Handler(onFulfilled, onRejected, promise) {
+    this.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
+    this.onRejected = typeof onRejected === 'function' ? onRejected : null;
+    this.promise = promise;
+  }
+
+  /**
+   * Take a potentially misbehaving resolver function and make sure
+   * onFulfilled and onRejected are only called once.
+   *
+   * Makes no guarantees about asynchrony.
+   */
+  function doResolve(fn, self) {
+    var done = false;
+    try {
+      fn(function (value) {
+        if (done) return;
+        done = true;
+        resolve(self, value);
+      }, function (reason) {
+        if (done) return;
+        done = true;
+        reject(self, reason);
+      });
+    } catch (ex) {
+      if (done) return;
+      done = true;
+      reject(self, ex);
+    }
+  }
+
+  Promise.prototype['catch'] = function (onRejected) {
+    return this.then(null, onRejected);
+  };
+
+  Promise.prototype.then = function (onFulfilled, onRejected) {
+    var prom = new (this.constructor)(noop);
+
+    handle(this, new Handler(onFulfilled, onRejected, prom));
+    return prom;
+  };
+
+  Promise.all = function (arr) {
+    var args = Array.prototype.slice.call(arr);
+
+    return new Promise(function (resolve, reject) {
+      if (args.length === 0) return resolve([]);
+      var remaining = args.length;
+
+      function res(i, val) {
+        try {
+          if (val && (typeof val === 'object' || typeof val === 'function')) {
+            var then = val.then;
+            if (typeof then === 'function') {
+              then.call(val, function (val) {
+                res(i, val);
+              }, reject);
+              return;
+            }
+          }
+          args[i] = val;
+          if (--remaining === 0) {
+            resolve(args);
+          }
+        } catch (ex) {
+          reject(ex);
+        }
+      }
+
+      for (var i = 0; i < args.length; i++) {
+        res(i, args[i]);
+      }
+    });
+  };
+
+  Promise.resolve = function (value) {
+    if (value && typeof value === 'object' && value.constructor === Promise) {
+      return value;
+    }
+
+    return new Promise(function (resolve) {
+      resolve(value);
+    });
+  };
+
+  Promise.reject = function (value) {
+    return new Promise(function (resolve, reject) {
+      reject(value);
+    });
+  };
+
+  Promise.race = function (values) {
+    return new Promise(function (resolve, reject) {
+      for (var i = 0, len = values.length; i < len; i++) {
+        values[i].then(resolve, reject);
+      }
+    });
+  };
+
+  // Use polyfill for setImmediate for performance gains
+  Promise._immediateFn = (typeof setImmediate === 'function' && function (fn) { setImmediate(fn); }) ||
+    function (fn) {
+      setTimeoutFunc(fn, 0);
+    };
+
+  Promise._unhandledRejectionFn = function _unhandledRejectionFn(err) {
+    if (typeof console !== 'undefined' && console) {
+      console.warn('Possible Unhandled Promise Rejection:', err); // eslint-disable-line no-console
+    }
+  };
+
+  /**
+   * Set the immediate function to execute callbacks
+   * @param fn {function} Function to execute
+   * @deprecated
+   */
+  Promise._setImmediateFn = function _setImmediateFn(fn) {
+    Promise._immediateFn = fn;
+  };
+
+  /**
+   * Change the function to execute on unhandled rejection
+   * @param {function} fn Function to execute on unhandled rejection
+   * @deprecated
+   */
+  Promise._setUnhandledRejectionFn = function _setUnhandledRejectionFn(fn) {
+    Promise._unhandledRejectionFn = fn;
+  };
+  
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = Promise;
+  } else if (!root.Promise) {
+    root.Promise = Promise;
+  }
+
+})(this);
+
+},{}],13:[function(require,module,exports){
+/*! @license Firebase v4.3.1
+Build: rev-b4fe95f
+Terms: https://firebase.google.com/terms/ */
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.deepCopy = deepCopy;
+exports.deepExtend = deepExtend;
+exports.patchProperty = patchProperty;
+/**
+* Copyright 2017 Google Inc.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+/**
+ * Do a deep-copy of basic JavaScript Objects or Arrays.
+ */
+function deepCopy(value) {
+    return deepExtend(undefined, value);
+}
+/**
+ * Copy properties from source to target (recursively allows extension
+ * of Objects and Arrays).  Scalar values in the target are over-written.
+ * If target is undefined, an object of the appropriate type will be created
+ * (and returned).
+ *
+ * We recursively copy all child properties of plain Objects in the source- so
+ * that namespace- like dictionaries are merged.
+ *
+ * Note that the target can be a function, in which case the properties in
+ * the source Object are copied onto it as static properties of the Function.
+ */
+function deepExtend(target, source) {
+    if (!(source instanceof Object)) {
+        return source;
+    }
+    switch (source.constructor) {
+        case Date:
+            // Treat Dates like scalars; if the target date object had any child
+            // properties - they will be lost!
+            var dateValue = source;
+            return new Date(dateValue.getTime());
+        case Object:
+            if (target === undefined) {
+                target = {};
+            }
+            break;
+        case Array:
+            // Always copy the array source and overwrite the target.
+            target = [];
+            break;
+        default:
+            // Not a plain Object - treat it as a scalar.
+            return source;
+    }
+    for (var prop in source) {
+        if (!source.hasOwnProperty(prop)) {
+            continue;
+        }
+        target[prop] = deepExtend(target[prop], source[prop]);
+    }
+    return target;
+}
+// TODO: Really needed (for JSCompiler type checking)?
+function patchProperty(obj, prop, value) {
+    obj[prop] = value;
+}
+
+
+},{}],14:[function(require,module,exports){
+(function (global){
+/*! @license Firebase v4.3.1
+Build: rev-b4fe95f
+Terms: https://firebase.google.com/terms/ */
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+/**
+* Copyright 2017 Google Inc.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+var scope;
+if (typeof global !== 'undefined') {
+    scope = global;
+} else if (typeof self !== 'undefined') {
+    scope = self;
+} else {
+    try {
+        scope = Function('return this')();
+    } catch (e) {
+        throw new Error('polyfill failed because global object is unavailable in this environment');
+    }
+}
+var globalScope = exports.globalScope = scope;
+
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],15:[function(require,module,exports){
+/*! @license Firebase v4.3.1
+Build: rev-b4fe95f
+Terms: https://firebase.google.com/terms/ */
+
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.attachDummyErrorHandler = exports.Deferred = exports.PromiseImpl = undefined;
+
+var _globalScope = require('../utils/globalScope');
+
+var PromiseImpl = exports.PromiseImpl = _globalScope.globalScope.Promise || require('promise-polyfill');
+/**
+ * A deferred promise implementation.
+ */
+/**
+* Copyright 2017 Google Inc.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+var Deferred = function () {
+    /** @constructor */
+    function Deferred() {
+        var self = this;
+        this.resolve = null;
+        this.reject = null;
+        this.promise = new PromiseImpl(function (resolve, reject) {
+            self.resolve = resolve;
+            self.reject = reject;
+        });
+    }
+    /**
+     * Our API internals are not promiseified and cannot because our callback APIs have subtle expectations around
+     * invoking promises inline, which Promises are forbidden to do. This method accepts an optional node-style callback
+     * and returns a node-style callback which will resolve or reject the Deferred's promise.
+     * @param {((?function(?(Error)): (?|undefined))| (?function(?(Error),?=): (?|undefined)))=} opt_nodeCallback
+     * @return {!function(?(Error), ?=)}
+     */
+    Deferred.prototype.wrapCallback = function (opt_nodeCallback) {
+        var self = this;
+        /**
+           * @param {?Error} error
+           * @param {?=} opt_value
+           */
+        function meta(error, opt_value) {
+            if (error) {
+                self.reject(error);
+            } else {
+                self.resolve(opt_value);
+            }
+            if (typeof opt_nodeCallback === 'function') {
+                attachDummyErrorHandler(self.promise);
+                // Some of our callbacks don't expect a value and our own tests
+                // assert that the parameter length is 1
+                if (opt_nodeCallback.length === 1) {
+                    opt_nodeCallback(error);
+                } else {
+                    opt_nodeCallback(error, opt_value);
+                }
+            }
+        }
+        return meta;
+    };
+    return Deferred;
+}();
+exports.Deferred = Deferred;
+/**
+ * Chrome (and maybe other browsers) report an Error in the console if you reject a promise
+ * and nobody handles the error. This is normally a good thing, but this will confuse devs who
+ * never intended to use promises in the first place. So in some cases (in particular, if the
+ * developer attached a callback), we should attach a dummy resolver to the promise to suppress
+ * this error.
+ *
+ * Note: We can't do this all the time, since it breaks the Promise spec (though in the obscure
+ * 3.3.3 section related to upgrading non-compliant promises).
+ * @param {!firebase.Promise} promise
+ */
+
+var attachDummyErrorHandler = exports.attachDummyErrorHandler = function attachDummyErrorHandler(promise) {
+    promise.catch(function () {});
+};
+
+
+},{"../utils/globalScope":14,"promise-polyfill":12}],16:[function(require,module,exports){
+/*! @license Firebase v4.3.1
+Build: rev-b4fe95f
+Terms: https://firebase.google.com/terms/ */
+
+'use strict';
+
+/**
+ * This is the Array.prototype.findIndex polyfill from MDN
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+ * https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
+ */
+if (!Array.prototype.findIndex) {
+    Object.defineProperty(Array.prototype, 'findIndex', {
+        value: function value(predicate) {
+            // 1. Let O be ? ToObject(this value).
+            if (this == null) {
+                throw new TypeError('"this" is null or not defined');
+            }
+            var o = Object(this);
+            // 2. Let len be ? ToLength(? Get(O, "length")).
+            var len = o.length >>> 0;
+            // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+            if (typeof predicate !== 'function') {
+                throw new TypeError('predicate must be a function');
+            }
+            // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+            var thisArg = arguments[1];
+            // 5. Let k be 0.
+            var k = 0;
+            // 6. Repeat, while k < len
+            while (k < len) {
+                // a. Let Pk be ! ToString(k).
+                // b. Let kValue be ? Get(O, Pk).
+                // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+                // d. If testResult is true, return k.
+                var kValue = o[k];
+                if (predicate.call(thisArg, kValue, k, o)) {
+                    return k;
+                }
+                // e. Increase k by 1.
+                k++;
+            }
+            // 7. Return -1.
+            return -1;
+        }
+    });
+}
+/**
+ * This is the Array.prototype.find polyfill from MDN
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+ * https://tc39.github.io/ecma262/#sec-array.prototype.find
+ */
+if (!Array.prototype.find) {
+    Object.defineProperty(Array.prototype, 'find', {
+        value: function value(predicate) {
+            // 1. Let O be ? ToObject(this value).
+            if (this == null) {
+                throw new TypeError('"this" is null or not defined');
+            }
+            var o = Object(this);
+            // 2. Let len be ? ToLength(? Get(O, "length")).
+            var len = o.length >>> 0;
+            // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+            if (typeof predicate !== 'function') {
+                throw new TypeError('predicate must be a function');
+            }
+            // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+            var thisArg = arguments[1];
+            // 5. Let k be 0.
+            var k = 0;
+            // 6. Repeat, while k < len
+            while (k < len) {
+                // a. Let Pk be ! ToString(k).
+                // b. Let kValue be ? Get(O, Pk).
+                // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+                // d. If testResult is true, return kValue.
+                var kValue = o[k];
+                if (predicate.call(thisArg, kValue, k, o)) {
+                    return kValue;
+                }
+                // e. Increase k by 1.
+                k++;
+            }
+            // 7. Return undefined.
+            return undefined;
+        }
+    });
+}
+
+
+},{}],17:[function(require,module,exports){
 // originally pulled out of simple-peer
 
 module.exports = function getBrowserRTC () {
@@ -2811,7 +3935,7 @@ module.exports = function getBrowserRTC () {
   return wrtc
 }
 
-},{}],11:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var hat = module.exports = function (bits, base) {
     if (!base) base = 16;
     if (bits === undefined) bits = 128;
@@ -2875,7 +3999,7 @@ hat.rack = function (bits, base, expandBy) {
     return fn;
 };
 
-},{}],12:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -2961,7 +4085,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],13:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -2986,7 +4110,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],14:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -3009,7 +4133,7 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],15:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports      = isTypedArray
 isTypedArray.strict = isStrictTypedArray
 isTypedArray.loose  = isLooseTypedArray
@@ -3052,14 +4176,14 @@ function isLooseTypedArray(arr) {
   return names[toString.call(arr)]
 }
 
-},{}],16:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],17:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 /**
  * Helpers.
  */
@@ -3213,7 +4337,7 @@ function plural(ms, n, name) {
   return Math.ceil(ms / n) + ' ' + name + 's';
 }
 
-},{}],18:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var wrappy = require('wrappy')
 module.exports = wrappy(once)
 module.exports.strict = wrappy(onceStrict)
@@ -3257,7 +4381,7 @@ function onceStrict (fn) {
   return f
 }
 
-},{"wrappy":39}],19:[function(require,module,exports){
+},{"wrappy":46}],26:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -3304,7 +4428,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 }).call(this,require('_process'))
-},{"_process":20}],20:[function(require,module,exports){
+},{"_process":27}],27:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -3490,10 +4614,10 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],21:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 module.exports = require('./lib/_stream_duplex.js');
 
-},{"./lib/_stream_duplex.js":22}],22:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":29}],29:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -3618,7 +4742,7 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
-},{"./_stream_readable":24,"./_stream_writable":26,"core-util-is":6,"inherits":13,"process-nextick-args":19}],23:[function(require,module,exports){
+},{"./_stream_readable":31,"./_stream_writable":33,"core-util-is":4,"inherits":20,"process-nextick-args":26}],30:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -3666,7 +4790,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":25,"core-util-is":6,"inherits":13}],24:[function(require,module,exports){
+},{"./_stream_transform":32,"core-util-is":4,"inherits":20}],31:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -4676,7 +5800,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./_stream_duplex":22,"./internal/streams/BufferList":27,"./internal/streams/destroy":28,"./internal/streams/stream":29,"_process":20,"core-util-is":6,"events":9,"inherits":13,"isarray":16,"process-nextick-args":19,"safe-buffer":34,"string_decoder/":37,"util":4}],25:[function(require,module,exports){
+},{"./_stream_duplex":29,"./internal/streams/BufferList":34,"./internal/streams/destroy":35,"./internal/streams/stream":36,"_process":27,"core-util-is":4,"events":7,"inherits":20,"isarray":23,"process-nextick-args":26,"safe-buffer":41,"string_decoder/":44,"util":2}],32:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -4891,7 +6015,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":22,"core-util-is":6,"inherits":13}],26:[function(require,module,exports){
+},{"./_stream_duplex":29,"core-util-is":4,"inherits":20}],33:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -5558,7 +6682,7 @@ Writable.prototype._destroy = function (err, cb) {
   cb(err);
 };
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./_stream_duplex":22,"./internal/streams/destroy":28,"./internal/streams/stream":29,"_process":20,"core-util-is":6,"inherits":13,"process-nextick-args":19,"safe-buffer":34,"util-deprecate":38}],27:[function(require,module,exports){
+},{"./_stream_duplex":29,"./internal/streams/destroy":35,"./internal/streams/stream":36,"_process":27,"core-util-is":4,"inherits":20,"process-nextick-args":26,"safe-buffer":41,"util-deprecate":45}],34:[function(require,module,exports){
 'use strict';
 
 /*<replacement>*/
@@ -5633,7 +6757,7 @@ module.exports = function () {
 
   return BufferList;
 }();
-},{"safe-buffer":34}],28:[function(require,module,exports){
+},{"safe-buffer":41}],35:[function(require,module,exports){
 'use strict';
 
 /*<replacement>*/
@@ -5706,13 +6830,13 @@ module.exports = {
   destroy: destroy,
   undestroy: undestroy
 };
-},{"process-nextick-args":19}],29:[function(require,module,exports){
+},{"process-nextick-args":26}],36:[function(require,module,exports){
 module.exports = require('events').EventEmitter;
 
-},{"events":9}],30:[function(require,module,exports){
+},{"events":7}],37:[function(require,module,exports){
 module.exports = require('./readable').PassThrough
 
-},{"./readable":31}],31:[function(require,module,exports){
+},{"./readable":38}],38:[function(require,module,exports){
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = exports;
 exports.Readable = exports;
@@ -5721,13 +6845,13 @@ exports.Duplex = require('./lib/_stream_duplex.js');
 exports.Transform = require('./lib/_stream_transform.js');
 exports.PassThrough = require('./lib/_stream_passthrough.js');
 
-},{"./lib/_stream_duplex.js":22,"./lib/_stream_passthrough.js":23,"./lib/_stream_readable.js":24,"./lib/_stream_transform.js":25,"./lib/_stream_writable.js":26}],32:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":29,"./lib/_stream_passthrough.js":30,"./lib/_stream_readable.js":31,"./lib/_stream_transform.js":32,"./lib/_stream_writable.js":33}],39:[function(require,module,exports){
 module.exports = require('./readable').Transform
 
-},{"./readable":31}],33:[function(require,module,exports){
+},{"./readable":38}],40:[function(require,module,exports){
 module.exports = require('./lib/_stream_writable.js');
 
-},{"./lib/_stream_writable.js":26}],34:[function(require,module,exports){
+},{"./lib/_stream_writable.js":33}],41:[function(require,module,exports){
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
 var Buffer = buffer.Buffer
@@ -5791,7 +6915,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
   return buffer.SlowBuffer(size)
 }
 
-},{"buffer":5}],35:[function(require,module,exports){
+},{"buffer":3}],42:[function(require,module,exports){
 (function (Buffer){
 /* global Blob */
 
@@ -6343,7 +7467,7 @@ Peer.prototype._debug = function () {
 function noop () {}
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":5,"debug":7,"get-browser-rtc":10,"hat":11,"inherits":13,"is-typedarray":15,"once":18,"stream":36}],36:[function(require,module,exports){
+},{"buffer":3,"debug":5,"get-browser-rtc":17,"hat":18,"inherits":20,"is-typedarray":22,"once":25,"stream":43}],43:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -6472,7 +7596,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":9,"inherits":13,"readable-stream/duplex.js":21,"readable-stream/passthrough.js":30,"readable-stream/readable.js":31,"readable-stream/transform.js":32,"readable-stream/writable.js":33}],37:[function(require,module,exports){
+},{"events":7,"inherits":20,"readable-stream/duplex.js":28,"readable-stream/passthrough.js":37,"readable-stream/readable.js":38,"readable-stream/transform.js":39,"readable-stream/writable.js":40}],44:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
@@ -6745,7 +7869,7 @@ function simpleWrite(buf) {
 function simpleEnd(buf) {
   return buf && buf.length ? this.write(buf) : '';
 }
-},{"safe-buffer":34}],38:[function(require,module,exports){
+},{"safe-buffer":41}],45:[function(require,module,exports){
 (function (global){
 
 /**
@@ -6816,7 +7940,7 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],39:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 // Returns a wrapper function that returns a wrapped callback
 // The wrapper function should do some stuff, and return a
 // presumably different callback function.
@@ -6851,4 +7975,161 @@ function wrappy (fn, cb) {
   }
 }
 
-},{}]},{},[2]);
+},{}],47:[function(require,module,exports){
+var firebase = require("firebase/app");
+
+
+var app = {
+	init:function(){
+		$("#chat").hide();
+		// this.showChat();
+		this.events.onInitBtnClick();
+		this.events.onJoinBtnClick();
+	},
+	showChat:function(){
+		$("#chat").show("slow");
+		this.hideBtns();
+		console.log(window.location.hash);
+		// if(window.location.hash === "#init"){
+		// 	$("#ohterid-group").hide();
+		// 	$("#myid-group").show();
+		// }else{
+		// 	$("#ohterid-group").show();
+		// 	$("#myid-group").hide();
+		// }
+	},
+	joinChat:function(){
+		$(".loader").hide();
+	},
+	initChat:function(){
+
+	},
+	hideBtns:function(){
+		$("#init").hide("slow");
+	},
+	events:{
+		onInitBtnClick:function(){
+			$("#init-btn").on('click',function(){
+				app.hideBtns();
+				app.showChat();
+			});
+		},
+		onJoinBtnClick:function(){
+			$("#join-btn").on('click',function(){
+				app.hideBtns();
+				app.showChat();
+				app.joinChat();
+			});
+		}
+	}
+};
+app.init();
+},{"firebase/app":8}],48:[function(require,module,exports){
+require('./app');
+// navigator.getUserMedia_ = (   navigator.mediaDevices.getUserMedia
+//                            || navigator.mediaDevices.webkitGetUserMedia 
+//                            || navigator.mediaDevices.mozGetUserMedia 
+//                            || navigator.mediaDevices.msGetUserMedia);
+
+// var getUserMedia_ = navigator.getUserMedia 
+
+// getUserMedia_({video:true,audio:false}, function(stream){
+// 	var Peer = require('simple-peer');
+// 	var peer = new Peer({
+// 		initiator:location.hash === '#init',
+// 		trickle:false,
+// 		stream:stream
+// 	});
+
+// 	peer.on('signal',function(data){
+// 		console.log(data);
+// 		$('.loader').hide();
+// 		$('#myId').val(JSON.stringify(data));
+// 	});
+
+// 	peer.on('connect', function () {
+// 		console.log('CONNECT')
+// 		peer.send('whatever' + Math.random())
+// 	})
+
+// 	peer.on('data', function (data) {
+// 		console.log('data: ' + data)
+// 	})
+
+// 	peer.on('stream',function(stream){
+// 		var video =  document.createElement('video');
+// 		$('#video-area').append(video);
+// 		video.src = window.URL.createObjectURL(stream);
+// 		video.play();
+// 	});
+
+// 	$("#connect").on('click',function(){
+// 		var otherId = $("#otherId").val();
+// 		peer.signal(otherId);
+// 	});
+
+// }, function(err){
+// 	console.error(err);
+// });
+
+
+// var SimplePeer = require('simple-peer')
+
+// // get video/voice stream 
+navigator.getUserMedia({ video: true, audio: true }, gotMedia, function () {})
+function gotMedia(stream) {
+	var Peer = require('simple-peer');
+	var peer = new Peer({
+		initiator:location.hash === '#init',
+		trickle:false,
+		stream:stream
+	});
+
+	peer.on('signal',function(data){
+		console.log(data);
+		$('.loader').hide();
+		$('#myId').val(JSON.stringify(data));
+	});
+
+	peer.on('connect', function () {
+		console.log('CONNECT')
+		peer.send('whatever' + Math.random())
+	})
+
+	peer.on('data', function (data) {
+		console.log('data: ' + data)
+	})
+
+	peer.on('stream',function(stream){
+		var video =  document.createElement('video');
+		$('#video-area').append(video);
+		video.src = window.URL.createObjectURL(stream);
+		video.play();
+	});
+
+	$("#connect").on('click',function(){
+		var otherId = $("#otherId").val();
+		peer.signal(otherId);
+	});
+}
+// function gotMedia (stream) {
+//  var peer1 = new SimplePeer({ initiator: true, stream: stream })
+//  var peer2 = new SimplePeer()
+
+//  peer1.on('signal', function (data) {
+// 	 peer2.signal(data)
+//  })
+
+//  peer2.on('signal', function (data) {
+// 	 peer1.signal(data)
+//  })
+
+//  peer2.on('stream', function (stream) {
+// 	 // got remote video stream, now let's show it in a video tag 
+// 	 var video = document.querySelector('video')
+// 	 console.log(stream);
+// 	 video.src = window.URL.createObjectURL(stream)
+// 	 video.play()
+//  })
+// }
+},{"./app":47,"simple-peer":42}]},{},[48]);
