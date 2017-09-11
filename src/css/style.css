@@ -1,0 +1,72 @@
+html,body {
+  min-width: 100%;
+  min-height: 100%;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.bg {
+  background: #f2f2f2;
+  background-repeat: no-repeat,no-repeat;
+  background-position: center center,center center;
+  background-size: cover,cover;
+}
+.bg > div {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.bg .bgImg {
+  background-image: url(https://auth.gfx.ms/16.000.27497.00/images/Backgrounds/0.jpg?x=f5a9a9531b8f4bcc86eabb19472d15d5);
+}
+.bg .bgOverLay {
+  background: rgba(0,0,0,.55);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#8C000000',endColorstr='#8C000000');
+  width: 100%;
+  height: 100%;
+}
+
+
+.outer {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 364px;
+  min-width: 320px;
+  max-width: 412px;
+  width: calc(100% - 40px);
+  padding: 36px;
+  margin-bottom: 28px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.55);
+  -moz-box-shadow: 0 2px 3px rgba(0,0,0,.55);
+  box-shadow: 0 2px 3px rgba(0,0,0,.55);
+  border: 1px solid #818c94;
+  border: 1px solid rgba(0,0,0,.4);
+}
+
+
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: visible;
+  z-index: 99;
+  clear: both;
+  background-color: rgba(0,0,0,.6);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000',endColorstr='#99000000');
+}
+
