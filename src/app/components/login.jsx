@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import FacebookLoginButton from 'react-social-login-buttons/lib/buttons/FacebookLoginButton';
 import RaisedButton from 'material-ui/RaisedButton';
+// import Footer from './common/footer';
 
 export default class Login extends Component {
   render () {
@@ -20,11 +21,8 @@ export default class Login extends Component {
       </div>
     </div>
     </div>
-   <div id="footer">
-    <div class="footer-links">
-      helow
-    </div>
-  </div> 
+    {/* <Footer></Footer> */}
+    
   </div>
     );
   }

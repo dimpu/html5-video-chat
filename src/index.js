@@ -17,7 +17,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 render(
   <MuiThemeProvider>
     <BrowserRouter>
-      <Route exact path='/' component={Login}>
+      <Route exact path='/' component={Home}>
         {/* <IndexRoute component={Home} /> */}
       
       </Route>

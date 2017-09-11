@@ -1,0 +1,12 @@
+.video_board {
+  display: flex;
+}
+
+.canvas {
+  height: calc(100% - 82px);
+}
+
+
+.sub {
+  
+}
