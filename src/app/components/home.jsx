@@ -56,22 +56,22 @@ export default class Home extends Component {
   render () {
     return (
       <div style={{height:"100%"}}>
-      <AppBar
-      title="Lets Talk Code"
-      iconClassNameRight="muidocs-icon-navigation-expand-more"
-    />
-    <div className="canvas">
-    <SplitPane split="vertical" minSize={50} defaultSize={getHWidth()}>
-        <SplitPane split="horizontal" className="sub"  defaultSize={getHeight()}>
-            <VideoChatWindow></VideoChatWindow>
-            <ChatBubble className="chat-pane" messages = {this.state.messages} />
-        </SplitPane>
-        
-        <CodeBoard></CodeBoard>
-    </SplitPane>
+        <AppBar
+        title="Lets Talk Code"
+        iconClassNameRight="muidocs-icon-navigation-expand-more"
+      />
+      <div className="canvas">
+      <SplitPane split="vertical" minSize={50} defaultSize={getHWidth()}>
+          <SplitPane split="horizontal" className="sub"  defaultSize={getHeight()}>
+              <VideoChatWindow></VideoChatWindow>
+              <ChatBubble className="chat-pane" messages = {this.state.messages} />
+          </SplitPane>
+          
+          <CodeBoard></CodeBoard>
+      </SplitPane>
 
-    </div>
-    <Footer></Footer>
+      </div>
+      <Footer></Footer>
     </div>
 
 
