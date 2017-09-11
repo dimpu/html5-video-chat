@@ -25,10 +25,33 @@ export default class Home extends Component {
           "type": 1,
           "image": "https://randomuser.me/api/portraits/women/65.jpg",
           "text": "Hello! Good Afternoon!"
-      }];
+      },{
+        "type": 0,
+        "image": "https://randomuser.me/api/portraits/women/65.jpg",
+        "text": "Hello! Good Afternoon!"
+    },{
+      "type": 1,
+      "image": "https://randomuser.me/api/portraits/women/65.jpg",
+      "text": "Hello! Good Afternoon!"
+  },{
+    "type": 0,
+    "image": "https://randomuser.me/api/portraits/women/65.jpg",
+    "text": "Hello! Good Afternoon!"
+},{
+  "type": 1,
+  "image": "https://randomuser.me/api/portraits/women/65.jpg",
+  "text": "Hello! Good Afternoon!"
+},{
+  "type": 0,
+  "image": "https://randomuser.me/api/portraits/women/65.jpg",
+  "text": "Hello! Good Afternoon!"
+}];
   }
   getHeight() {
-    
+    return 200;
+  }
+  getHWidth() {
+    return (document.width) / 2;
   }
   render () {
     return (
@@ -39,9 +62,9 @@ export default class Home extends Component {
     />
     <div className="canvas">
     <SplitPane split="vertical" minSize={50} defaultSize={800}>
-        <SplitPane split="horizontal" className="sub"  defaultSize={100}>
+        <SplitPane split="horizontal" className="sub"  defaultSize={this.getHeight()}>
             <VideoChatWindow></VideoChatWindow>
-            <ChatBubble messages = {this.state.messages} />
+            <ChatBubble className="chat-pane" messages = {this.state.messages} />
         </SplitPane>
         
         <CodeBoard></CodeBoard>

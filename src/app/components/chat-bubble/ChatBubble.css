@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.h-full {
+    height: calc(100% - 10px);
+}
+
 .bubble-direction-reverse {
   flex-direction: row-reverse;
 }
@@ -66,4 +70,8 @@
   border-radius: 42%;
   height:42px;
   width:42px;
+}
+.chats {
+    height: 300px;
+    overflow-x: scroll;
 }

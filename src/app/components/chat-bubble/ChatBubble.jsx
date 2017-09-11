@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import UserInput from './UserInput.jsx';
+
 import './ChatBubble.css';
 
 class ChatBubble extends Component {
@@ -32,8 +34,11 @@ class ChatBubble extends Component {
     const {messages} = this.props;
     const chatList = this.getConversations(messages);
     return (
+      <div className="h-full">
       <div className="chats">
         {chatList}
+      </div>
+      <UserInput></UserInput>
       </div>
     );
   }
