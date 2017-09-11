@@ -51,7 +51,7 @@ export default class Home extends Component {
     return 200;
   }
   getHWidth() {
-    return (document.width) / 2;
+    
   }
   render () {
     return (
@@ -61,8 +61,8 @@ export default class Home extends Component {
       iconClassNameRight="muidocs-icon-navigation-expand-more"
     />
     <div className="canvas">
-    <SplitPane split="vertical" minSize={50} defaultSize={800}>
-        <SplitPane split="horizontal" className="sub"  defaultSize={this.getHeight()}>
+    <SplitPane split="vertical" minSize={50} defaultSize={getHWidth()}>
+        <SplitPane split="horizontal" className="sub"  defaultSize={getHeight()}>
             <VideoChatWindow></VideoChatWindow>
             <ChatBubble className="chat-pane" messages = {this.state.messages} />
         </SplitPane>
@@ -70,9 +70,14 @@ export default class Home extends Component {
         <CodeBoard></CodeBoard>
     </SplitPane>
 
-      <Footer></Footer>
     </div>
+    <Footer></Footer>
     </div>
+
+
     );
   }
 }
+
+let getHWidth = () => (window.innerWidth) / 2;
+let getHeight = () => (window.innerHeight - (64+18))/2;
