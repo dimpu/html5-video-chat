@@ -19,7 +19,7 @@
 .code-area, 
 .code-area div:nth-child(3), 
 .code-area div:nth-child(3) > div {
-  height: 100%;
+  height: calc(100% - 16px);
 }
 
 .code-area-ide {
