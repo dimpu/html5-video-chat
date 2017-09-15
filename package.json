@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "browserify -p [ browserify-hmr -m ajax -u /bundle.js ] index.js -o bundle.js",
-    "start": "budo src/index.js:index.js --dir='src' --open --pushstate --base  --live -- -p browserify-hmr -t browserify-css -t babelify -t reactify  --es6 --target es5"
+    "start": "budo src/index.js:index.js --dir='src' --ssl --open --pushstate --base  --live -- -p browserify-hmr -t browserify-css -t babelify -t reactify  --es6 --target es5"
   },
   "repository": {
     "type": "git",
@@ -29,10 +29,12 @@
     "react-router-dom": "^4.2.2",
     "react-signature-pad": "0.0.6",
     "react-split-pane": "^0.1.66",
+    "react-twilio-video": "^1.1.16",
     "reactfire": "^1.0.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "twilio-video": "^1.3.0"
   },
   "devDependencies": {
     "babel-plugin-transform-react-jsx": "^6.24.1",
