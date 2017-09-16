@@ -93,16 +93,16 @@ export default class Home extends Component {
         <div className="canvas">
           <SplitPane split="vertical" minSize={50} defaultSize={getHWidth()}>
             <SplitPane split="horizontal" className="sub" defaultSize={getHeight()}>
-              <VideoChatWindow></VideoChatWindow>
+              <VideoChatWindow className="full"></VideoChatWindow>
               <ChatBubble className="chat-pane" messages={this.state.messages} />
             </SplitPane>
             <Tabs className="code-area">
               <Tab label="Board">
                 <CodeBoard></CodeBoard>
               </Tab>
-              <Tab label="Editor" className="code-area-ide" onActive={this.handleTabActive.bind(this)}>
+              {/* <Tab label="Editor" className="code-area-ide" onActive={this.handleTabActive.bind(this)}>
                 <CodeIde></CodeIde>
-              </Tab>
+              </Tab> */}
             </Tabs>
           </SplitPane>
         </div>

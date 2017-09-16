@@ -44,8 +44,9 @@ class ChatBubble extends Component {
   }
 }
 
-ChatBubble.propTypes = {
-  messages: React.PropTypes.array
-};
+// ChatBubble.propTypes = {
+//   messages: React.PropTypes.array
+// };
+
 
 export default ChatBubble;
