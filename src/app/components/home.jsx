@@ -100,9 +100,9 @@ export default class Home extends Component {
               <Tab label="Board">
                 <CodeBoard></CodeBoard>
               </Tab>
-              {/* <Tab label="Editor" className="code-area-ide" onActive={this.handleTabActive.bind(this)}>
+              <Tab label="Editor" className="code-area-ide" onActive={this.handleTabActive.bind(this)}>
                 <CodeIde></CodeIde>
-              </Tab> */}
+              </Tab>
             </Tabs>
           </SplitPane>
         </div>

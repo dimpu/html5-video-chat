@@ -6,10 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "browserify -p [ browserify-hmr -m ajax -u /bundle.js ] index.js -o bundle.js",
-    "build:watch": "watchify -p [ browserify-hmr -m none --supportModes [ ajax websocket ] ]   src/index.js -t browserify-css -t babelify -t reactify  --es6 --target es5 -o dist/index.js",
+    "build:watch": "watchify src/index.js -t browserify-css -t babelify -t reactify  -t react-hot-transform --es6 --target es5 -o dist/index.js",
     "start": "budo src/index.js:index.js --dir='src' --ssl --open --pushstate --base  --live -- -p browserify-hmr -t browserify-css -t babelify -t reactify  --es6 --target es5",
     "express": "nodemon --watch src server.js",
-    "serve": "run-p build:watch express "
+    "serve": "run-p build:watch express ",
+    "set": "webpack-dev-server",
+    "set:build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -24,18 +26,14 @@
   "dependencies": {
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
-    "firebase": "^4.3.1",
     "material-ui": "^0.19.1",
     "react": "^15.6.1",
     "react-ace": "^5.2.0",
-    "react-chat-bubble": "^0.8.6",
     "react-dom": "^15.6.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-signature-pad": "0.0.6",
     "react-split-pane": "^0.1.66",
-    "react-twilio-video": "^1.1.16",
-    "reactfire": "^1.0.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
@@ -43,16 +41,16 @@
     "twilio-video": "^1.3.0"
   },
   "devDependencies": {
-    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "babelify": "^7.3.0",
-    "browserify-css": "^0.12.0",
-    "browserify-hmr": "^0.3.5",
-    "budo": "^10.0.4",
+    "css-loader": "^0.28.7",
     "npm-run-all": "^4.1.1",
-    "reactify": "^1.1.1",
-    "simplifyify": "^3.2.4",
-    "watchify": "^3.9.0"
+    "react-hot-loader": "^1.3.1",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
   }
 }
