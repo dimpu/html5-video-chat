@@ -4,14 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify -p [ browserify-hmr -m ajax -u /bundle.js ] index.js -o bundle.js",
-    "build:watch": "watchify src/index.js -t browserify-css -t babelify -t reactify  -t react-hot-transform --es6 --target es5 -o dist/index.js",
-    "start": "budo src/index.js:index.js --dir='src' --ssl --open --pushstate --base  --live -- -p browserify-hmr -t browserify-css -t babelify -t reactify  --es6 --target es5",
-    "express": "nodemon --watch src server.js",
-    "serve": "run-p build:watch express ",
-    "set": "webpack-dev-server",
-    "set:build": "webpack"
+    "start": "webpack-dev-server",
+    "lint": "eslint src",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.production.js",
+    "postbuild": "copyfiles index.html dist"
   },
   "repository": {
     "type": "git",
@@ -25,6 +22,7 @@
   "homepage": "https://github.com/dimpu/html5-video-chat#readme",
   "dependencies": {
     "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
     "express": "^4.15.4",
     "material-ui": "^0.19.1",
     "react": "^15.6.1",
@@ -41,16 +39,21 @@
     "twilio-video": "^1.3.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "copyfiles": "^1.2.0",
+    "cross-env": "^3.1.4",
     "css-loader": "^0.28.7",
-    "npm-run-all": "^4.1.1",
-    "react-hot-loader": "^1.3.1",
+    "eslint": "^3.14.1",
+    "eslint-plugin-react": "^6.9.0",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "rimraf": "^2.6.0",
     "style-loader": "^0.18.2",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2"
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
   }
 }

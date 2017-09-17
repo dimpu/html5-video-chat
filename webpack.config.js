@@ -1,53 +1,38 @@
-// const validator = require('webpack-validator');
 const path = require('path');
 var webpack = require('webpack');
 
-// const config = {
-
-// 	entry: [
-// 	    'webpack-dev-server/client?https://localhost:3443',
-//         'webpack/hot/dev-server',
-// 		path.join( __dirname, 'src/index.js')
-// 	],
-// 	output: {
-// 		path: path.join( __dirname, 'dist'),
-// 		filename: 'index.js',
-// 		publicPath: '/dist',		
-// 	},
-
-// 	module: {
-// 		loaders: [
-// 			{
-// 				test: /\.js|jsx$/, loaders: ['react-hot', 'babel'],
-// 				exclude: /node_modules/
-// 			},
-// 			{
-// 				test: /\.css$/, loaders: ['style', 'css']
-// 			}
-// 		]
-// 	},
-// 	plugins: [
-// 		new webpack.HotModuleReplacementPlugin()
-// 	],
-// 	devServer: {
-// 		inline: true,
-// 		hot: true,
-// 		contentBase: './dist'
-// 	}
-// };
 
 module.exports = {
-  entry: './src/index.js',
+ 	entry: [
+    'react-hot-loader/patch',
+    // activate HMR for React
+
+    'webpack-dev-server/client?http://localhost:3000',
+    // 'webpack-hot-middleware/client?path=/__what&timeout=2000&overlay=false',
+    
+    // bundle the client for webpack-dev-server
+    // and connect to the provided endpoint
+
+    'webpack/hot/only-dev-server',
+    // bundle the client for hot reloading
+    // only- means to only hot reload for successful updates
+
+    './src/client/index.js',
+    // the entry point of our app
+	],
   output: {
     filename: 'index.bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/public/' 
   },
   	module: {
 		loaders: [
-			{
-				test: /\.js|jsx$/, loaders: ['react-hot-loader', 'babel-loader'],
-				exclude: /node_modules/
-			},
+      {
+            test: /\.js|jsx$/,
+            loaders: ['babel-loader'],
+            include: path.join(__dirname, 'src'),
+            exclude: /node_modules/
+        },
 			{
 				test: /\.css$/, loaders: ['style-loader', 'css-loader']
 			}
@@ -55,10 +40,16 @@ module.exports = {
   },
   plugins: [
 		new webpack.HotModuleReplacementPlugin()
-	],
-	devServer: {
-		inline: true,
-		hot: true,
-		contentBase: './dist'
-	}
+  ],
+  devtool: 'inline-source-map',
+  devServer: {
+    host: 'localhost',
+    port: 3000,
+
+    historyApiFallback: true,
+    // respond to 404s with index.html
+
+    hot: true,
+    // enable HMR on the server
+  },
 };
