@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './css/style.css';
 
 // app code 
-import Home from './app/components/home/home.jsx';
+import Home from './app/components/home.jsx';
 import Login from './app/components/login.jsx';
 
 
@@ -22,5 +22,3 @@ export default class Router extends Component {
     );
   }
 }
-
-
